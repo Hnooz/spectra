@@ -11,7 +11,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <base-input label="Name" name="name" v-model="form.name" :error="$page.errors.name" required></base-input>
                         <base-input type="number" label="Price" name="price" v-model="form.price" :error="$page.errors.price" required></base-input>
-                        <base-input type="text" label="Image" name="image" v-model="form.image" :error="$page.errors.image" required></base-input>
+                        <!-- <base-input type="text" label="Image" name="image" v-model="form.image" :error="$page.errors.image" required></base-input> -->
                        <label class="block" for="">
                             <span class="text-gray-700">
                             Category
