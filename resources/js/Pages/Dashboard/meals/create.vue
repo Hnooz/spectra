@@ -15,9 +15,6 @@
                         <div>
                             <base-input type="number" label="Price" name="price" v-model="form.price" :error="$page.errors.price" required></base-input>
                         </div>
-                        <!-- <div>
-                            <base-input label="Image" type="text" v-model="form.image" :error="$page.errors.image" required></base-input>
-                        </div> -->
                         <div>
                             <label class="block" for="">
                                 <span class="text-gray-700">
