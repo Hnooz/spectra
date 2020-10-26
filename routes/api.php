@@ -12,3 +12,4 @@ Route::get('orderdetails' , 'API\OrderDetailsController@index');
 Route::get('orders' , 'API\OrderController@index');
 Route::post('orders' , 'API\OrderController@store');
 Route::put('orders/{order}' , 'API\OrderController@update');
+Route::delete('orders/{order}', 'API\OrderController@destroy');

@@ -30,6 +30,11 @@
                                         style="text-align: start">
                                         Name
                                     </th>
+
+                                    <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                                        style="text-align: start">
+                                        Edit
+                                    </th>
                                     <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                                 </tr>
                                 </thead>
@@ -38,14 +43,16 @@
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                         {{ category.id }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                    <td  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                         {{ category.name }}
                                     </td>
 
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        <Edit :category="category" :show="show"/>                                      
+                                    </td>
+
                                     <td class="flex px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium">
-                                        <!-- <inertia-link :href="`/dashboard/categories/${category.id}/edit`" class="text-indigo-600 hover:text-indigo-900">
-                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                                        </inertia-link> -->
+                                        <svg @click="showInput(category)" class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
                                         <button @click="Delete(category)" class="focus:outline-none outline-none">
                                             <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                                         </button>
@@ -64,14 +71,16 @@
 
 <script>
 import Layout from '../../../Shared/Layout'
+import Edit from '../categories/Edit'
     export default {
-        components: {Layout},
+        components: {Layout,Edit},
         props:['categories'],
         data() {
             return {
+                show:0,
                 form: {
                     name: '',
-                }
+                },
             }
         },
         methods: {
@@ -82,6 +91,9 @@ import Layout from '../../../Shared/Layout'
             },
             Delete(category){
                      this.$inertia.delete(`/dashboard/categories/${category.id}`);
+            },
+            showInput(category){
+                this.show = category.id
             }
         }
     }

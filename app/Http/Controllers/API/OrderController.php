@@ -11,7 +11,11 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::all();
-        return response()->json($orders);
+        return response()->json([
+                    'data' => $orders,
+                    'status' => 200, 
+                    'error' => false, 
+                    'meassge' => '']);
     }
 
     public function store(Request $request)
@@ -26,7 +30,11 @@ class OrderController extends Controller
             'status' => $request->status
         ]);
 
-        return response()->json($order);
+        return response()->json([
+                'data' => $order, 
+                'status' => 201, 
+                'error' => false, 
+                'meassge' => 'data was created successfuly']);
 
     }
 
@@ -39,11 +47,21 @@ class OrderController extends Controller
 
         $order->update($data);
 
-        return response()->json($order);
+        return response()->json([
+            'data' => $order, 
+            'status' => 200, 
+            'error' => false, 
+            'meassge' => 'data was updated successfuly']);
     }
 
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+
+        return response()->json([
+            'data' => $order, 
+            'status' => 200, 
+            'error' => false, 
+            'meassge' => 'data was deleted successfuly']);
     }
 }

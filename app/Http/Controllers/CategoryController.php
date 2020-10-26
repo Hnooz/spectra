@@ -25,10 +25,25 @@ class CategoryController extends Controller
         return redirect()->back();
     }
 
+    public function update(Request $request, Category $category)
+    {
+        // dd($request);
+        $data = $request->validate(['name' => 'required']);
+        
+        $category->update($data);
+        
+        session()->flash('toast', [
+            'type' => 'error',
+            'message' => 'Category updated successfully'
+        ]);
+
+        return redirect()->back();
+    }
+
     public function destroy(Category $category)
     {
         $category->delete();
-// dd($category);
+
         session()->flash('toast', [
             'type' => 'error',
             'message' => 'Category deleted successfully'

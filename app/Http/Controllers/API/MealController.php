@@ -13,7 +13,7 @@ class MealController extends Controller
     {
         $meals = Meal::all();
 
-        return response()->json($meals);
+        return response()->json(['data' => $meals, 'status' => 200]);
     }
 
 }
