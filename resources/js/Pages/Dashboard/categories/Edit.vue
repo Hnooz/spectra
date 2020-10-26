@@ -1,7 +1,7 @@
 <template>
     <form @update.prevent="submit">
         <input :disabled="this.show == !category.id" class="border border-indigo-300 px-3 rounded text-gray-600" type="text"   name="name" :error="$page.errors.updatename" v-model="updatename" required>
-        <base-button primary>update Category</base-button>
+        <base-button primary hidden>update Category</base-button>
         <button @click="test" type="submit">test</button>
     </form>  
 </template>

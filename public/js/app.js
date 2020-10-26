@@ -6397,7 +6397,7 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("base-button", { attrs: { primary: "" } }, [
+      _c("base-button", { attrs: { primary: "", hidden: "" } }, [
         _vm._v("update Category")
       ]),
       _vm._v(" "),
