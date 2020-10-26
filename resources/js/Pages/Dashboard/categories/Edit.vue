@@ -25,15 +25,6 @@
         },
 
         methods: {
-            test() {
-                try {
-                    console.log(this.update());
-                    
-                } catch (error) {
-                    console.log(error);
-                }
-            },
-
             update() {
                 this.$inertia.put(this.$route('categories.update', this.category.id), this.form);
 

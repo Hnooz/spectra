@@ -2382,13 +2382,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    test: function test() {
-      try {
-        console.log(this.update());
-      } catch (error) {
-        console.log(error);
-      }
-    },
     update: function update() {
       this.$inertia.put(this.$route('categories.update', this.category.id), this.form);
       this.edit = false;
@@ -2473,6 +2466,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2483,7 +2479,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['categories'],
   data: function data() {
     return {
-      show: 0,
+      // show:0,
       form: {
         name: ''
       }
@@ -2496,10 +2492,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     Delete: function Delete(category) {
       this.$inertia["delete"]("/dashboard/categories/".concat(category.id));
-    },
-    showInput: function showInput(category) {
-      this.show = category.id;
-    }
+    } // showInput(category){
+    //     this.show = category.id
+    // }
+
   }
 });
 
@@ -6499,6 +6495,13 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
+      _c("h1", { staticClass: "text-gray-500 text-xs" }, [
+        _c("span", { staticClass: "font-semibold text-red-400" }, [
+          _vm._v("Hint")
+        ]),
+        _vm._v(" double click the name to edit\n        ")
+      ]),
+      _vm._v(" "),
       _c("div", { staticClass: "mt-4" }, [
         _c("div", { staticClass: "flex flex-col" }, [
           _c(
@@ -6587,35 +6590,6 @@ var render = function() {
                                   "flex px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium"
                               },
                               [
-                                _c(
-                                  "svg",
-                                  {
-                                    staticClass: "w-6 h-6 text-indigo-600",
-                                    attrs: {
-                                      fill: "none",
-                                      stroke: "currentColor",
-                                      viewBox: "0 0 24 24",
-                                      xmlns: "http://www.w3.org/2000/svg"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.showInput(category)
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _c("path", {
-                                      attrs: {
-                                        "stroke-linecap": "round",
-                                        "stroke-linejoin": "round",
-                                        "stroke-width": "2",
-                                        d:
-                                          "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                                      }
-                                    })
-                                  ]
-                                ),
-                                _vm._v(" "),
                                 _c(
                                   "button",
                                   {
