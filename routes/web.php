@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn() => redirect()->route('dashboard.index'));
+// User Redirect function
+Route::redirect('/', '/dashboard');
 
 Auth::routes(['register' => false, 'confirm' => false, 'reset' => false]);
 
