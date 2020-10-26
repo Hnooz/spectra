@@ -2367,15 +2367,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['category', 'show'],
+  props: ['category'],
   data: function data() {
     return {
-      updatename: ''
+      form: {
+        name: this.category.name
+      },
+      edit: false
     };
-  },
-  created: function created() {
-    this.updatename = this.category.name;
   },
   methods: {
     test: function test() {
@@ -2386,7 +2390,8 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     update: function update() {
-      this.$inertia.put(this.$route('categories.update', this.category.id), this.updatename);
+      this.$inertia.put(this.$route('categories.update', this.category.id), this.form);
+      this.edit = false;
     }
   }
 });
@@ -2404,13 +2409,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Shared_Layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../Shared/Layout */ "./resources/js/Shared/Layout.vue");
 /* harmony import */ var _categories_Edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../categories/Edit */ "./resources/js/Pages/Dashboard/categories/Edit.vue");
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -6362,50 +6360,64 @@ var render = function() {
     "form",
     {
       on: {
-        update: function($event) {
+        submit: function($event) {
           $event.preventDefault()
           return _vm.submit($event)
         }
       }
     },
     [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.updatename,
-            expression: "updatename"
-          }
-        ],
-        staticClass: "border border-indigo-300 px-3 rounded text-gray-600",
-        attrs: {
-          disabled: this.show == !_vm.category.id,
-          type: "text",
-          name: "name",
-          error: _vm.$page.errors.updatename,
-          required: ""
-        },
-        domProps: { value: _vm.updatename },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.updatename = $event.target.value
-          }
-        }
-      }),
+      !_vm.edit
+        ? _c(
+            "h3",
+            {
+              on: {
+                dblclick: function($event) {
+                  _vm.edit = true
+                }
+              }
+            },
+            [_vm._v(_vm._s(_vm.category.name))]
+          )
+        : _vm._e(),
       _vm._v(" "),
-      _c("base-button", { attrs: { primary: "", hidden: "" } }, [
-        _vm._v("update Category")
-      ]),
-      _vm._v(" "),
-      _c("button", { attrs: { type: "submit" }, on: { click: _vm.test } }, [
-        _vm._v("test")
-      ])
-    ],
-    1
+      _vm.edit
+        ? _c("div", { staticClass: "flex items-center space-x-2" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.name,
+                  expression: "form.name"
+                }
+              ],
+              staticClass:
+                "px-4 py-2 block rounded bg-white text-gray-800 border border-gray-300 focus:border-blue-500 focus:outline-none focus:shadow-outline",
+              attrs: { type: "text" },
+              domProps: { value: _vm.form.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "name", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass:
+                  "flex items-center py-2 px-4 capitalize tracking-wide bg-gray-800 text-white font-medium rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700",
+                on: { click: _vm.update }
+              },
+              [_vm._v("Edit")]
+            )
+          ])
+        : _vm._e()
+    ]
   )
 }
 var staticRenderFns = []
@@ -6531,20 +6543,6 @@ var render = function() {
                           ]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "th",
-                          {
-                            staticClass:
-                              "px-6 py-3 border-b border-gray-200 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider",
-                            staticStyle: { "text-align": "start" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                    Edit\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
                         _c("th", {
                           staticClass:
                             "px-6 py-3 border-b border-gray-200 bg-gray-50"
@@ -6556,127 +6554,109 @@ var render = function() {
                       "tbody",
                       { staticClass: "bg-white text-gray-700" },
                       _vm._l(_vm.categories, function(category) {
-                        return _c("tr", { key: category.index }, [
-                          _c(
-                            "td",
-                            {
-                              staticClass:
-                                "px-6 py-4 whitespace-no-wrap border-b border-gray-200"
-                            },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(category.id) +
-                                  "\n                                "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            {
-                              staticClass:
-                                "px-6 py-4 whitespace-no-wrap border-b border-gray-200"
-                            },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(category.name) +
-                                  "\n                                "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            {
-                              staticClass:
-                                "px-6 py-4 whitespace-no-wrap border-b border-gray-200"
-                            },
-                            [
-                              _c("Edit", {
-                                attrs: { category: category, show: _vm.show }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            {
-                              staticClass:
-                                "flex px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium"
-                            },
-                            [
-                              _c(
-                                "svg",
-                                {
-                                  staticClass: "w-6 h-6 text-indigo-600",
-                                  attrs: {
-                                    fill: "none",
-                                    stroke: "currentColor",
-                                    viewBox: "0 0 24 24",
-                                    xmlns: "http://www.w3.org/2000/svg"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.showInput(category)
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("path", {
+                        return _c(
+                          "tr",
+                          {
+                            key: category.index,
+                            staticClass: "border-b border-gray-200"
+                          },
+                          [
+                            _c(
+                              "td",
+                              { staticClass: "px-6 py-4 whitespace-no-wrap" },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(category.id) +
+                                    "\n                                "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              { staticClass: "px-6 py-4 whitespace-no-wrap" },
+                              [_c("Edit", { attrs: { category: category } })],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass:
+                                  "flex px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium"
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass: "w-6 h-6 text-indigo-600",
                                     attrs: {
-                                      "stroke-linecap": "round",
-                                      "stroke-linejoin": "round",
-                                      "stroke-width": "2",
-                                      d:
-                                        "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                                    }
-                                  })
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "focus:outline-none outline-none",
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.Delete(category)
-                                    }
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "svg",
-                                    {
-                                      staticClass: "w-6 h-6 text-red-500",
-                                      attrs: {
-                                        fill: "none",
-                                        stroke: "currentColor",
-                                        viewBox: "0 0 24 24",
-                                        xmlns: "http://www.w3.org/2000/svg"
-                                      }
+                                      fill: "none",
+                                      stroke: "currentColor",
+                                      viewBox: "0 0 24 24",
+                                      xmlns: "http://www.w3.org/2000/svg"
                                     },
-                                    [
-                                      _c("path", {
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.showInput(category)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        "stroke-linecap": "round",
+                                        "stroke-linejoin": "round",
+                                        "stroke-width": "2",
+                                        d:
+                                          "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "focus:outline-none outline-none",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.Delete(category)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "svg",
+                                      {
+                                        staticClass: "w-6 h-6 text-red-500",
                                         attrs: {
-                                          "stroke-linecap": "round",
-                                          "stroke-linejoin": "round",
-                                          "stroke-width": "2",
-                                          d:
-                                            "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                          fill: "none",
+                                          stroke: "currentColor",
+                                          viewBox: "0 0 24 24",
+                                          xmlns: "http://www.w3.org/2000/svg"
                                         }
-                                      })
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        ])
+                                      },
+                                      [
+                                        _c("path", {
+                                          attrs: {
+                                            "stroke-linecap": "round",
+                                            "stroke-linejoin": "round",
+                                            "stroke-width": "2",
+                                            d:
+                                              "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
+                        )
                       }),
                       0
                     )
@@ -22456,8 +22436,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/hnooz/Documents/Projects/spectra/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/hnooz/Documents/Projects/spectra/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /home/khatabwedaa/Code/contributions/spectra/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/khatabwedaa/Code/contributions/spectra/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
