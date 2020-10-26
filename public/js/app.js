@@ -6495,11 +6495,11 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("h1", { staticClass: "text-gray-500 text-xs" }, [
+      _c("h1", { staticClass: "font-medium text-gray-500 text-xs" }, [
         _c("span", { staticClass: "font-semibold text-red-400" }, [
           _vm._v("Hint")
         ]),
-        _vm._v(" double click the name to edit\n        ")
+        _vm._v(" double click on name to modify\n        ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "mt-4" }, [

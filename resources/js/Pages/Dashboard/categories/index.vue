@@ -14,8 +14,8 @@
                     </form>
                 </div>
             </div>
-            <h1 class="text-gray-500 text-xs">
-                <span class="font-semibold text-red-400">Hint</span> double click the name to edit
+            <h1 class="font-medium text-gray-500 text-xs">
+                <span class="font-semibold text-red-400">Hint</span> double click on name to modify
             </h1>
             <div class="mt-4">
                 <div class="flex flex-col">
