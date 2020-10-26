@@ -27,13 +27,12 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
-        // dd($request);
         $data = $request->validate(['name' => 'required']);
         
         $category->update($data);
         
         session()->flash('toast', [
-            'type' => 'error',
+            'type' => 'success',
             'message' => 'Category updated successfully'
         ]);
 
