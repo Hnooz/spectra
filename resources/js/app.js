@@ -36,3 +36,4 @@ if (app) {
         }),
     }).$mount(app)
 }
+
