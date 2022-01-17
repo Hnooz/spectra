@@ -43,7 +43,7 @@
                         <span class="mx-2 text-gray-300">Users</span>
                     </inertia-link>
                 </li>
-                <!-- <li class="px-2 py-3 hover:bg-gray-900 rounded mt-2">
+                <li class="px-2 py-3 hover:bg-gray-900 rounded mt-2">
                     <inertia-link href="/dashboard/orders" class="flex items-center">
                         <svg class="w-6 text-gray-500" fill="none" stroke-linecap="round"
                              stroke-linejoin="round"
@@ -53,7 +53,7 @@
                         </svg>
                         <span class="mx-2 text-gray-300">Orders</span>
                     </inertia-link>
-                </li> -->
+                </li>
 
                 <li class="px-2 py-3 hover:bg-gray-900 rounded mt-2">
                     <inertia-link href="/dashboard/categories" class="flex items-center">

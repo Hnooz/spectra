@@ -3,8 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('meals' , 'API\MealController@index');
+Route::get('products' , 'API\ProductController@index');
+
 Route::get('categories' , 'API\CategoryController@index');
+
+Route::get('categories/{category}' , 'API\CategoryController@show');
+
 
 Route::post('orderdetails' , 'API\OrderDetailsController@store');
 Route::get('orderdetails' , 'API\OrderDetailsController@index');

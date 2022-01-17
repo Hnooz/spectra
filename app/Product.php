@@ -6,7 +6,7 @@ use App\Category;
 use App\OrderDetails;
 use Illuminate\Database\Eloquent\Model;
 
-class Meal extends Model
+class Product extends Model
 {
 
     protected $guarded = [];
